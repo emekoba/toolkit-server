@@ -1,13 +1,11 @@
 const express = require("express");
 const app = express();
 const https = require("https");
-let PayStack = require("paystack-node");
 
 const port = 1300;
 let APIKEY = "Bearer sk_test_3e1985b417a1687392580aa3580f6da0ceb7cc77";
-// const paystack = new PayStack(APIKEY, "development");
 
-app.get("/", async (request, response) => {
+function generate() {
 	const params = JSON.stringify({
 		email: "customer@email.com",
 		amount: "20000",
@@ -34,8 +32,13 @@ app.get("/", async (request, response) => {
 
 	req.write(params);
 	req.end();
+}
+
+app.get("/generate", async (req, res) => {
+	generate();
 });
 
 app.listen(port, () => {
 	console.log(`Example app listening on port ${port}`);
+	generate();
 });
