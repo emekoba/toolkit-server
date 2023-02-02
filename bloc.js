@@ -6,7 +6,7 @@ let APIKEY = `Bearer ${process.env.PAYSTACK_APIKEY}`;
 function generate() {
 	const params = JSON.stringify({
 		email: "rjemekoba@email.com",
-		amount: 237500,
+		amount: 23750000,
 	});
 
 	const options = {
